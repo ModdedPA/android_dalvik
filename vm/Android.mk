@@ -66,8 +66,14 @@ include $(BUILD_SHARED_LIBRARY)
 # Derivation #1
 # Enable assertions and JIT tuning
 include $(LOCAL_PATH)/ReconfigureDvm.mk
+<<<<<<< HEAD
 LOCAL_CFLAGS += -UNDEBUG -DDEBUG=1 -DLOG_NDEBUG=1 -DWITH_DALVIK_ASSERT -fno-strict-aliasing \
                 -DWITH_JIT_TUNING $(target_smp_flag)
+=======
+LOCAL_CFLAGS += -UNDEBUG -DDEBUG=1 -DLOG_NDEBUG=1 -DWITH_DALVIK_ASSERT \
+                -DWITH_JIT_TUNING $(target_smp_flag) \
+                -fno-strict-aliasing
+>>>>>>> 9ebde0c... strict aliasing fix
 # TODO: split out the asflags.
 LOCAL_ASFLAGS := $(LOCAL_CFLAGS)
 LOCAL_MODULE := libdvm_assert
@@ -78,8 +84,14 @@ ifneq ($(dvm_arch),mips)    # MIPS support for self-verification is incomplete
     # Derivation #2
     # Enable assertions and JIT self-verification
     include $(LOCAL_PATH)/ReconfigureDvm.mk
+<<<<<<< HEAD
     LOCAL_CFLAGS += -UNDEBUG -DDEBUG=1 -DLOG_NDEBUG=1 -DWITH_DALVIK_ASSERT -fno-strict-aliasing \
                     -DWITH_SELF_VERIFICATION $(target_smp_flag)
+=======
+    LOCAL_CFLAGS += -UNDEBUG -DDEBUG=1 -DLOG_NDEBUG=1 -DWITH_DALVIK_ASSERT \
+                    -DWITH_SELF_VERIFICATION $(target_smp_flag) \
+                    -fno-strict-aliasing
+>>>>>>> 9ebde0c... strict aliasing fix
     # TODO: split out the asflags.
     LOCAL_ASFLAGS := $(LOCAL_CFLAGS)
     LOCAL_MODULE := libdvm_sv
